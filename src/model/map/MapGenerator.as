@@ -9,13 +9,11 @@ package model.map
 	{
 		private var _mapSize:Point;
 		private var _mapArray:Array;
-		private var _mapVector:Vector.<MapSector>;
 		private var _wayVector:Vector.<Point> = new Vector.<Point>();
 		
 		public function MapGenerator(mapWidth:int, mapHeight:int) 
 		{
 			_mapSize = new Point(mapWidth, mapHeight);
-			_mapVector = new Vector.<MapSector>();
 			generateCleanMap();
 			generateWay();
 			updateMapWithWays();
@@ -30,7 +28,6 @@ package model.map
 					mapSector.kind = "G";
 					mapSector.position = new Point(i, j);
 					_mapArray[j][i] = mapSector;
-					_mapVector.push(mapSector);
 				}
 			}
 		}
@@ -73,11 +70,6 @@ package model.map
 		public function get mapArray():Array 
 		{
 			return _mapArray;
-		}
-		
-		public function get mapVector():Vector.<MapSector> 
-		{
-			return _mapVector;
 		}
 		
 		public function get mapSize():Point 

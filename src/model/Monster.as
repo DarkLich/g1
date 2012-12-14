@@ -29,9 +29,9 @@ package model
 		}
 		
 		public function update():void {
-			trace(positionNum, way.length);
+			trace("Monster > ",positionNum, way.length);
 			if (positionNum+1 == way.length) {
-				trace("FINISH");
+				trace("Monster > ","FINISH");
 				dispatchEvent(new Event(FINISH));
 			} else {
 				if (position.x < way[positionNum + 1].x) {

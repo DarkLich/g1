@@ -5,7 +5,7 @@ package controller
 	import go.GO;
 	import model.LevelMap;
 	import model.map.MapGenerator;
-	import view.Map;
+	import view.MapV;
 	
 	/**
 	 * ...
@@ -18,7 +18,7 @@ package controller
 		{
 			var levelMap:MapGenerator = new MapGenerator(9, 9);
 			GO.levelMap = levelMap;
-			var map:Map = new Map(levelMap);
+			var map:MapV = new MapV(levelMap);
 			mainView.addChild(map);
 		}
 		

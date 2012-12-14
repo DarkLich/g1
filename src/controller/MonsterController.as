@@ -7,8 +7,8 @@ package controller
 	import go.GO;
 	import model.IUpdate;
 	import model.Monster;
-	import view.MonstersView;
-	import view.MonsterView;
+	import view.MonstersV;
+	import view.MonsterV;
 	
 	/**
 	 * ...
@@ -17,17 +17,17 @@ package controller
 	public class MonsterController extends EventDispatcher 
 	{
 		private var monstersArr:Vector.<Monster> = new Vector.<Monster>;
-		public function MonsterController(mainView:DisplayObjectContainer) {
-			var monstersView:MonstersView = new MonstersView();
-			mainView.addChild(monstersView);
+		public function MonsterController(mainV:DisplayObjectContainer) {
+			var monstersV:MonstersV = new MonstersV();
+			mainV.addChild(monstersV);
 			
 			var monster:Monster = new Monster(GO.levelMap.wayVector);
 			monstersArr.push(monster);
-			var monsterView:MonsterView = new MonsterView(monster);
-			monstersView.addChild(monsterView);
-			monster.addEventListener(Monster.UPDATED, monsterView.update);
+			var monsterV:MonsterV = new MonsterV(monster);
+			monstersV.addChild(monsterV);
+			monster.addEventListener(Monster.UPDATED, monsterV.update);
 			monster.addEventListener(Monster.FINISH, finish);
-			monster.addEventListener(Monster.FINISH, monsterView.finish);
+			monster.addEventListener(Monster.FINISH, monsterV.finish);
 			
 			GO.main.addEventListener(Event.ENTER_FRAME, onEnterFrame);
 		}
