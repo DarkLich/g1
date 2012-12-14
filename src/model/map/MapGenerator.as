@@ -43,10 +43,17 @@ package model.map
 			_wayVector.push(new Point(4, 3));
 			_wayVector.push(new Point(4, 4));
 			_wayVector.push(new Point(4, 5));
-			_wayVector.push(new Point(3, 5));
-			_wayVector.push(new Point(3, 6));
+			_wayVector.push(new Point(4, 6));
 			_wayVector.push(new Point(4, 7));
-			_wayVector.push(new Point(4, 8));
+			_wayVector.push(new Point(3, 7));
+			_wayVector.push(new Point(2, 7));
+			_wayVector.push(new Point(2, 6));
+			_wayVector.push(new Point(2, 5));
+			_wayVector.push(new Point(1, 5));
+			_wayVector.push(new Point(0, 5));
+			_wayVector.push(new Point(0, 6));
+			_wayVector.push(new Point(0, 7));
+			_wayVector.push(new Point(0, 8));
 			//for (var j:int = 0; j < mapSize.y; j++) {
 				//_wayVector
 			//}
