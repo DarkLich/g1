@@ -1,6 +1,6 @@
 package 
 {
-	import controller.MainController;
+	import controller.MainC;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.text.TextField;
@@ -28,7 +28,7 @@ package
 			GO.stageWidth = stage.stageWidth;
 			GO.stageHeight = stage.stageHeight;
 			GO.main = this;
-			var mainController:MainController = new MainController(this);
+			var mainController:MainC = new MainC(this);
 			var mg:MapGenerator = new MapGenerator(10, 10);
 		}
 		
