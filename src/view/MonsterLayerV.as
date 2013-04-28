@@ -6,10 +6,10 @@ package view
 	 * ...
 	 * @author Dark Lich
 	 */
-	public class MainView extends Sprite 
+	public class MonsterLayerV extends Sprite 
 	{
 		
-		public function MainView() 
+		public function MonsterLayerV() 
 		{
 			
 		}

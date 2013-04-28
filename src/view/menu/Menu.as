@@ -1,6 +1,8 @@
 package view.menu 
 {
 	import flash.display.Sprite;
+	import go.GO;
+	import view.menu.buyTower.BuyTowerMenu;
 	
 	/**
 	 * ...
@@ -8,11 +10,14 @@ package view.menu
 	 */
 	public class Menu extends Sprite 
 	{
+		public var buyTowerMenu:BuyTowerMenu = new BuyTowerMenu();
 		
 		public function Menu() 
 		{
-			var buyTower:BuyTower = new BuyTower();
-			addChild(buyTower);
+			x = GO.stageWidth - 200;
+			y = GO.stageHeight - 200;
+			
+			addChild(buyTowerMenu);
 		}
 		
 	}

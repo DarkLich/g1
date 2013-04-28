@@ -1,6 +1,8 @@
 package model.map 
 {
 	import flash.geom.Point;
+	import go.GO;
+	import model.Random;
 	/**
 	 * ...
 	 * @author Dark Lich
@@ -20,12 +22,13 @@ package model.map
 		}
 		
 		private function generateCleanMap():void {
+			var terrArr:Array = ["grass","none","terra","water"];
 			_mapArray = [];
 			for (var j:int = 0; j < _mapSize.y; j++) {
 				_mapArray[j] = [];
 				for (var i:int = 0; i < _mapSize.x; i++) {
 					var mapSector:MapSector = new MapSector();
-					mapSector.kind = "G";
+					mapSector.kind = terrArr[Random.random(0,4)];
 					mapSector.position = new Point(i, j);
 					_mapArray[j][i] = mapSector;
 				}

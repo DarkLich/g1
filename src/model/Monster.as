@@ -3,6 +3,8 @@ package model
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.geom.Point;
+	import go.GO;
+	import model.tower.Tower;
 	/**
 	 * ...
 	 * @author Dark Lich
@@ -16,43 +18,78 @@ package model
 		private var positionNum:int;
 		public var position:Point;
 		public var way:Vector.<Point>;
+		public var respTime:int = 0;
+		public var id:int;
+		public var attackingTowers:Vector.<Tower> = new Vector.<Tower>;
 		
 		public static const UPDATED:String = "updated";
+		public static const START:String = "start";
 		public static const FINISH:String = "finish";
+		public static const POSITION_CHANGED:String = "posititon_changed";
 		
-		public function Monster(way:Vector.<Point>) 
+		public function Monster(way:Vector.<Point>, respTime:int) 
 		{
+			id = GO.towersCount++;
+			this.respTime = respTime;
 			this.way = way;
 			speed = 0.05;
 			positionNum = 0;
-			position = way[positionNum];
+			position = new Point(way[positionNum].x, way[positionNum].y);
 		}
 		
 		public function update():void {
-			trace("Monster > ",positionNum, way.length);
-			if (positionNum+1 == way.length) {
-				trace("Monster > ","FINISH");
-				dispatchEvent(new Event(FINISH));
+			if (respTime < 0){ 
+				if (positionNum+1 == way.length) {
+						dispatchEvent(new Event(FINISH));
+				} else {
+						if (position.x < way[positionNum + 1].x) {
+							position.x += speed;
+						}
+						if (position.x > way[positionNum + 1].x) {
+							position.x -= speed;
+						}
+						if (position.y < way[positionNum + 1].y) {
+							position.y += speed;
+						}
+						if (position.y > way[positionNum + 1].y) {
+							position.y -= speed;
+						}
+						if ((Math.abs(position.x - way[positionNum + 1].x) <= speed )&&(Math.abs(position.y - way[positionNum + 1].y) <= speed)) {
+							positionNum++;
+							if (!(positionNum+1 == way.length)) {
+								dispatchEvent(new Event(POSITION_CHANGED));
+							}
+						}
+						//position = new Point(position.x, position.y);
+						dispatchEvent(new Event(UPDATED));
+				}
 			} else {
-				if (position.x < way[positionNum + 1].x) {
-					position.x = position.x + speed;
+				respTime--;
+				if (respTime < 0) { 
+					dispatchEvent(new Event(START));
 				}
-				if (position.x > way[positionNum + 1].x) {
-					position.x = position.x - speed;
-				}
-				if (position.y < way[positionNum + 1].y) {
-					position.y = position.y + speed;
-				}
-				if (position.y > way[positionNum + 1].y) {
-					position.y = position.y - speed;
-				}
-				if ((Math.abs(position.x - way[positionNum + 1].x) <= speed )&&(Math.abs(position.y - way[positionNum + 1].y) <= speed)) {
-					positionNum++;
-				}
-				//position = new Point(position.x, position.y);
 			}
-			
-			dispatchEvent(new Event(UPDATED));
+			//trace(position.y);
+		}
+		
+		public function getWayPosition():int {
+			return positionNum;
+		}
+		
+		public function addTower(tower:Tower):void {
+			var towerAdded:Boolean = false;
+			for each (var tow:Tower in attackingTowers) {
+				if (tow.id == tower.id) {
+					towerAdded = true;
+				}
+			}
+			if (!towerAdded){
+				attackingTowers.push(tower);
+			}
+		}
+		
+		public function removeTowers():void {
+			attackingTowers = new Vector.<Tower>;
 		}
 		
 	}

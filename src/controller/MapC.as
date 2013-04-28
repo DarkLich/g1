@@ -14,12 +14,12 @@ package controller
 	public class MapC extends EventDispatcher 
 	{
 		
-		public function MapC(mainView:DisplayObjectContainer) 
+		public function MapC(conteiner:DisplayObjectContainer) 
 		{
-			var levelMap:MapGenerator = new MapGenerator(9, 9);
+			var levelMap:MapGenerator = new MapGenerator(GO.mapSizeFields.x, GO.mapSizeFields.y);
 			GO.levelMap = levelMap;
 			var map:MapV = new MapV(levelMap);
-			mainView.addChild(map);
+			conteiner.addChild(map);
 		}
 		
 	}

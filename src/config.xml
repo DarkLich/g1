@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<images>
+		<tower>
+				<name>Tower1</name>
+				<src>images/towers/1.png</src>
+		</tower>
+		<tower>
+				<name>Tower2</name>
+				<src>images/towers/2.png</src>
+		</tower>
+		<tower>
+				<name>Tower3</name>
+				<src>images/towers/3.png</src>
+		</tower>
+		<tower>
+				<name>Tower4</name>
+				<src>images/towers/4.png</src>
+		</tower>
+		<terrain>
+				<name>Grass</name>
+				<src>images/grass.jpg</src>
+		</terrain>
+		<terrain>
+				<name>Road</name>
+				<src>images/road.jpg</src>
+		</terrain>
+		<monster>
+				<name>Mob1</name>
+				<src>images/mob.png</src>
+		</monster>
+	</images>
+</data>

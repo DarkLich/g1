@@ -29,9 +29,17 @@ package view
 					text_f.textColor = 0xFF0000;
 					
 					switch(String(mapModel.mapArray[j][i].kind)) {
-						case "G":
-							field = new Textures.Grass();
-							text_f.text = String(mapModel.mapArray[j][i].kind) +"\n"+ String(mapModel.mapArray[j][i].position);
+						case "grass":
+							 field = new Bitmap(Textures.getInstance().grass);
+							 text_f.text = String(mapModel.mapArray[j][i].kind);// +"\n" + String(mapModel.mapArray[j][i].position);
+						break;
+						case "water":
+								field = new Bitmap(Textures.getInstance().water);
+								text_f.text = String(mapModel.mapArray[j][i].kind);// +"\n"+ String(mapModel.mapArray[j][i].position);
+						break;
+						case "terra":
+								field = new Bitmap(Textures.getInstance().terra);
+								text_f.text = String(mapModel.mapArray[j][i].kind);// +"\n"+ String(mapModel.mapArray[j][i].position);
 						break;
 						case "L":
 						case "R":
@@ -39,11 +47,11 @@ package view
 						case "S":
 						case "F":
 							cou ++;
-							field = new Textures.Road();
+							field = new Bitmap(Textures.getInstance().road);
 							text_f.text = String(mapModel.mapArray[j][i].kind) +"\n"+ String(mapModel.mapArray[j][i].position);
 						break;	
 						default:
-							field = new Textures.Road();
+							field = new Bitmap(Textures.getInstance().none);
 						break;
 					}
 					//field.scaleX = field.scaleY = 0.5;

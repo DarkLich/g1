@@ -1,8 +1,14 @@
 package controller 
 {
 	import flash.display.DisplayObjectContainer;
+	import flash.events.Event;
 	import flash.events.EventDispatcher;
-	import view.MainView;
+	import flash.events.KeyboardEvent;
+	import flash.events.MouseEvent;
+	import flash.geom.Point;
+	import go.GO;
+	import go.Textures;
+	import view.MainV;
 	import view.menu.Menu;
 	
 	/**
@@ -11,21 +17,35 @@ package controller
 	 */
 	public class MainC extends EventDispatcher 
 	{
+		private var _main:DisplayObjectContainer;
+		private var mainView:MainV = new MainV();
+		private var gameHolderC:GameHolderC;
 		
 		public function MainC(main:DisplayObjectContainer) 
 		{
-			var mainView:MainView = new MainView();
-			main.addChild(mainView);
+			_main = main;
 			
-			var mapC:MapC = new MapC(mainView);
+			Textures.getInstance().loadTextures(GO.configXml);
+			Textures.getInstance().addEventListener(Textures.TEXTURES_LOADED, onTexturesLoaded);	
+		}
+		
+		private function onTexturesLoaded(ev:Event):void {
+			_main.addChild(mainView);	
 			
-			var monsterC:MonsterC = new MonsterC(mainView);
+			gameHolderC = new GameHolderC(mainView);	
 			
-			var towerC:TowerC = new TowerC(mainView);
+			var mapC:MapC = new MapC(gameHolderC.gameHolderV);
+			
+			var monsterC:MonsterC = new MonsterC(gameHolderC.gameHolderV);
 			
 			var menu:Menu = new Menu();
-			mainView.addChild(menu);
+			var towerC:TowerC = new TowerC(gameHolderC.gameHolderV, menu.buyTowerMenu);
+			
+			
+			_main.addChild(menu);
 		}
+		
+	
 		
 	}
 

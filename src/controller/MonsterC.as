@@ -7,7 +7,8 @@ package controller
 	import go.GO;
 	import model.IUpdate;
 	import model.Monster;
-	import view.MonstersV;
+	import model.tower.Tower;
+	import view.MonsterLayerV;
 	import view.MonsterV;
 	
 	/**
@@ -17,29 +18,50 @@ package controller
 	public class MonsterC extends EventDispatcher 
 	{
 		private var monstersArr:Vector.<Monster> = new Vector.<Monster>;
-		public function MonsterC(mainV:DisplayObjectContainer) {
-			var monstersV:MonstersV = new MonstersV();
-			mainV.addChild(monstersV);
-			
-			var monster:Monster = new Monster(GO.levelMap.wayVector);
-			monstersArr.push(monster);
-			var monsterV:MonsterV = new MonsterV(monster);
-			monstersV.addChild(monsterV);
-			monster.addEventListener(Monster.UPDATED, monsterV.update);
-			monster.addEventListener(Monster.FINISH, finish);
-			monster.addEventListener(Monster.FINISH, monsterV.finish);
-			
+		private var z:int = 0;
+		
+		public function MonsterC(conteiner:DisplayObjectContainer) {
+			var monsterLayerV:MonsterLayerV = new MonsterLayerV();
+			conteiner.addChild(monsterLayerV);
+			for (var i:int = 0 ; i < 3; i++) {
+					var monster:Monster = new Monster(GO.levelMap.wayVector, i * Math.random() * 150);
+					monstersArr.push(monster);
+					var monsterV:MonsterV = new MonsterV(monster);
+					monsterLayerV.addChild(monsterV);
+					monster.addEventListener(Monster.UPDATED, monsterV.update);
+					monster.addEventListener(Monster.FINISH, finish);
+					monster.addEventListener(Monster.FINISH, monsterV.finish);
+					monster.addEventListener(Monster.START, monsterV.start);
+					monster.addEventListener(Monster.POSITION_CHANGED, onPositionChanged);
+			}
 			GO.main.addEventListener(Event.ENTER_FRAME, onEnterFrame);
 		}
 		
 		private function onEnterFrame(ev:Event):void {
-			for each (var mon:IUpdate in monstersArr) {
-				mon.update();
-			}
+			//z++;
+			//if (z>10){
+					for each (var mon:IUpdate in monstersArr) {
+						mon.update();
+					}
+					//z = 0;
+			//}
 		}
 		
-		private function finish(ev:Event):void {
+		private function finish(ev:Event):void {	
 			monstersArr.splice(monstersArr.indexOf(ev.currentTarget), 1);
+		}
+		
+		private function onPositionChanged(ev:Event):void {
+			var monster:Monster = ev.currentTarget as Monster;
+			for each (var tow:Tower in monster.attackingTowers) {
+				tow.removeMonster(monster);
+			}
+			monster.removeTowers();
+			for each (var tower:Tower in GO.wayCover[monster.getWayPosition() + 1]) {
+				tower.addMonster(monster);
+				monster.addTower(tower);
+			}
+			
 		}
 	}
 

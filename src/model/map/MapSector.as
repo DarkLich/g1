@@ -9,6 +9,7 @@ package model.map
 	{
 		public var position:Point;
 		public var kind:String;
+		public var image:String;
 		
 		public function MapSector() 
 		{
