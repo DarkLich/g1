@@ -54,13 +54,13 @@ package view
 							field = new Bitmap(Textures.getInstance().none);
 						break;
 					}
-					//field.scaleX = field.scaleY = 0.5;
-					field.x = i * 64 * field.scaleX;
-					field.y = j * 64 * field.scaleX;
+					//field.scaleX = field.scaleY = 2;
+					field.x = i * GO.fieldSize.x * field.scaleX;
+					field.y = j * GO.fieldSize.y * field.scaleX;
 					addChild(field);
 					text_f.x = field.x;
 					text_f.y = field.y;
-					addChild(text_f);
+					//addChild(text_f);
 					
 				}
 			}

@@ -30,10 +30,10 @@ package controller
 			//if (GO.stage.mouseX < 0 + 10) gameHolderV.x += 5;
 			//if (GO.stage.mouseY > GO.stageHeight - 10) gameHolderV.y -= 5;
 			//if (GO.stage.mouseY < 0 +  10) gameHolderV.y += 5;
+			if (gameHolderV.x < GO.stageWidth - GO.mapSizePixels.x) gameHolderV.x = GO.stageWidth - GO.mapSizePixels.x;
+			if (gameHolderV.y < GO.stageHeight - GO.mapSizePixels.y) gameHolderV.y = GO.stageHeight - GO.mapSizePixels.y;		
 			if (gameHolderV.x > 0 ) gameHolderV.x = 0;
 			if (gameHolderV.y > 0 ) gameHolderV.y = 0;
-			if (gameHolderV.x < GO.stageWidth - GO.mapSizePixels.x) gameHolderV.x = GO.stageWidth - GO.mapSizePixels.x;
-			if (gameHolderV.y < GO.stageHeight - GO.mapSizePixels.y) gameHolderV.y = GO.stageHeight - GO.mapSizePixels.y;			
 		}
 		
 		private function onKeyDown(ev:KeyboardEvent):void {

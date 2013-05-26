@@ -7,13 +7,13 @@ package model.map
 	 * ...
 	 * @author Dark Lich
 	 */
-	public class MapGenerator implements IMap 
+	public class Map implements IMap 
 	{
 		private var _mapSize:Point;
 		private var _mapArray:Array;
 		private var _wayVector:Vector.<Point> = new Vector.<Point>();
 		
-		public function MapGenerator(mapWidth:int, mapHeight:int) 
+		public function Map(mapWidth:int, mapHeight:int) 
 		{
 			_mapSize = new Point(mapWidth, mapHeight);
 			generateCleanMap();
@@ -28,8 +28,10 @@ package model.map
 				_mapArray[j] = [];
 				for (var i:int = 0; i < _mapSize.x; i++) {
 					var mapSector:MapSector = new MapSector();
-					mapSector.kind = terrArr[Random.random(0,4)];
+					//mapSector.kind = terrArr[Random.random(0, 4)];
+					mapSector.kind = terrArr[0];
 					mapSector.position = new Point(i, j);
+					mapSector.buildAble = true;
 					_mapArray[j][i] = mapSector;
 				}
 			}
@@ -64,6 +66,7 @@ package model.map
 				var mapSector:MapSector = new MapSector();
 				mapSector.kind = "R";
 				mapSector.position = value;
+				mapSector.buildAble = false;
 				_mapArray[value.y][value.x] = mapSector;
 			}
 		}

@@ -29,13 +29,17 @@ package view
 			var col:int;
 			if (tower.active) {
 				col = 0x00ff00;
+				graphics.beginFill(col, 0.1);
+				for (var i:int = 0; i < towerModel.relFieldCover.length;i++){
+				graphics.drawRect(towerModel.relFieldCover[i].x * GO.fieldSize.x, towerModel.relFieldCover[i].y * GO.fieldSize.y, GO.fieldSize.x,GO.fieldSize.y);
+			}
 			}else {
 				col = 0xff0000;
 			}
-			graphics.beginFill(col, 0.5);
-			for (var i:int = 0; i < towerModel.relFieldCover.length;i++){
-				graphics.drawRect(towerModel.relFieldCover[i].x * GO.fieldSize.x, towerModel.relFieldCover[i].y * GO.fieldSize.y, GO.fieldSize.x,GO.fieldSize.y);
-			}
+			//graphics.beginFill(col, 0.1);
+			//for (var i:int = 0; i < towerModel.relFieldCover.length;i++){
+				//graphics.drawRect(towerModel.relFieldCover[i].x * GO.fieldSize.x, towerModel.relFieldCover[i].y * GO.fieldSize.y, GO.fieldSize.x,GO.fieldSize.y);
+			//}
 		}
 		
 		public function update(ev:Event):void {
@@ -44,14 +48,14 @@ package view
 		public function activate():void {
 			var col:int = 0x00ff00;
 			graphics.clear();
-			graphics.beginFill(col, 0.5);
+			graphics.beginFill(col, 0.1);
 			for (var i:int = 0; i < towerModel.relFieldCover.length;i++){
 				graphics.drawRect(towerModel.relFieldCover[i].x * GO.fieldSize.x, towerModel.relFieldCover[i].y * GO.fieldSize.y, GO.fieldSize.x,GO.fieldSize.y);
 			}
 		}
 		
 		private function fire(ev:Event):void {
-			alpha = Math.random();
+			//alpha = Math.random();
 		}
 		
 	}

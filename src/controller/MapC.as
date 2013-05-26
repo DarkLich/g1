@@ -4,7 +4,7 @@ package controller
 	import flash.events.EventDispatcher;
 	import go.GO;
 	import model.LevelMap;
-	import model.map.MapGenerator;
+	import model.map.Map;
 	import view.MapV;
 	
 	/**
@@ -16,7 +16,7 @@ package controller
 		
 		public function MapC(conteiner:DisplayObjectContainer) 
 		{
-			var levelMap:MapGenerator = new MapGenerator(GO.mapSizeFields.x, GO.mapSizeFields.y);
+			var levelMap:Map = new Map(GO.mapSizeFields.x, GO.mapSizeFields.y);
 			GO.levelMap = levelMap;
 			var map:MapV = new MapV(levelMap);
 			conteiner.addChild(map);

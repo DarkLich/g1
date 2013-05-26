@@ -8,7 +8,7 @@ package
 	import flash.geom.Point;
 	import flash.text.TextField;
 	import go.GO;
-	import model.map.MapGenerator;
+	import model.map.Map;
 	import model.map.MapSector;
 	
 	/**
@@ -38,10 +38,8 @@ package
 			GO.main = this;
 			GO.fieldSize = new Point(64, 64);
 			GO.mapSizeFields = new Point(20, 20);
-			GO.mapSizePixels = new Point(GO.mapSizeFields.x * GO.fieldSize.x, GO.mapSizeFields.y * GO.fieldSize.y)
-			var mainController:MainC = new MainC(this);
-			var mg:MapGenerator = new MapGenerator(10, 10);
-			
+			GO.mapSizePixels = new Point(GO.mapSizeFields.x * GO.fieldSize.x, GO.mapSizeFields.y * GO.fieldSize.y);
+			var mainController:MainC = new MainC(this);			
 		}
 		
 	}

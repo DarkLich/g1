@@ -16,6 +16,8 @@ package go
 		private var imagesToLoad:int = 0;
 		private var loadedImages:int = 0;
 		
+		public var take:Object = { };
+		
 		public var grass:BitmapData;
 		public var mob:BitmapData;
 		public var road:BitmapData;
@@ -44,10 +46,14 @@ package go
 		}
 		
 		private function onLoaded(ev:Event):void {
+			take[String(ev.currentTarget.name)] = ev.currentTarget.loadedBitmapData;
 			switch(String(ev.currentTarget.name)) {
 				case "Grass":
 						grass = ev.currentTarget.loadedBitmapData;
 				break;		
+				case "Mob1":
+						mob = ev.currentTarget.loadedBitmapData;
+				break;	
 				case "Mob1":
 						mob = ev.currentTarget.loadedBitmapData;
 				break;	

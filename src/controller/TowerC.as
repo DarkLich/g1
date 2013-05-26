@@ -63,6 +63,7 @@ package controller
 			var towerV:TowerV = new TowerV(tower);
 			updateWayCover(tower);	
 			towersLayer.addChild(towerV);
+			listenTowerModels(towerV);
 			
 			var tower2:Tower = new Tower(3, 6);
 			tower2.type = "Tower2";
@@ -70,9 +71,10 @@ package controller
 			var towerV2:TowerV = new TowerV(tower2);
 			updateWayCover(tower2);	
 			towersLayer.addChild(towerV2);
-			
-			listenTowerModels(towerV);
 			listenTowerModels(towerV2);
+			
+			
+			
 			
 			GO.main.addEventListener(Event.ENTER_FRAME, onEnterFrame);
 		}
@@ -104,7 +106,7 @@ package controller
 		}
 		
 		private function onMouseMove(ev:MouseEvent):void {
-			movingTower.x = Math.floor((GO.stage.mouseX - _conteiner.x)/GO.fieldSize.x)*GO.fieldSize.x;
+			movingTower.x = Math.floor((GO.stage.mouseX - _conteiner.x) / GO.fieldSize.x) * GO.fieldSize.x;
 			movingTower.y = Math.floor((GO.stage.mouseY - _conteiner.y) / GO.fieldSize.y) * GO.fieldSize.y;
 		}
 		
@@ -125,6 +127,7 @@ package controller
 					}
 				}
 			}
+			trace(GO.wayCover);
 		}
 		
 	}

@@ -36,11 +36,11 @@ package controller
 			
 			var mapC:MapC = new MapC(gameHolderC.gameHolderV);
 			
-			var monsterC:MonsterC = new MonsterC(gameHolderC.gameHolderV);
+			
 			
 			var menu:Menu = new Menu();
 			var towerC:TowerC = new TowerC(gameHolderC.gameHolderV, menu.buyTowerMenu);
-			
+			var monsterC:MonsterC = new MonsterC(gameHolderC.gameHolderV);
 			
 			_main.addChild(menu);
 		}

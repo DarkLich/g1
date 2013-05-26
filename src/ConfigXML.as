@@ -30,7 +30,7 @@ package
 								</tower>
 								<terrain>
 										<name>Grass</name>
-										<src>images/terra/grass.png</src>
+										<src>images/terra/grass_full.png</src>
 								</terrain>
 								<terrain>
 										<name>Road</name>
@@ -50,8 +50,12 @@ package
 								</terrain>
 								<monster>
 										<name>Mob1</name>
-										<src>images/mob.png</src>
+										<src>images/mob1_front.png</src>
 								</monster>
+								<dead_monster>
+										<name>deadMob1</name>
+										<src>images/deadmob.png</src>
+								</dead_monster>
 							</images>
 						</data>
 		}

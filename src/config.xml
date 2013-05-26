@@ -19,7 +19,7 @@
 		</tower>
 		<terrain>
 				<name>Grass</name>
-				<src>images/grass.jpg</src>
+				<src>images/grass_full.jpg</src>
 		</terrain>
 		<terrain>
 				<name>Road</name>
